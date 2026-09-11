@@ -1,0 +1,8 @@
+flowchart LR
+    A["Fields + PDE coefficients"] --> B["Boundary and initial conditions"]
+    B --> C["Neural model + physics loss"]
+    C --> D["Predicted solution field"]
+    D --> E["L2 error / residual norm"]
+    E --> F["Physics-Informed Neural Operators
+Evaluation"]
+    F -. feedback .-> C

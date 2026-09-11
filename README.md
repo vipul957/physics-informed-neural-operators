@@ -31,6 +31,24 @@ flowchart LR
 The repository currently contains a dependency-light, deterministic baseline with tests. It is intentionally small enough to inspect line by line. The next research layer should preserve the same input contract and evaluation protocol rather than replacing the baseline with an opaque demo.
 
 
+## Visual architecture
+
+The project follows a transparent pipeline. Each stage has a testable responsibility, and the evaluation stage feeds failure information back into the next experiment.
+
+```mermaid
+flowchart LR
+    A["Fields + PDE coefficients"] --> B["Boundary and initial conditions"]
+    B --> C["Neural model + physics loss"]
+    C --> D["Predicted solution field"]
+    D --> E["L2 error / residual norm"]
+    E --> F["Physics-Informed Neural Operators
+Evaluation"]
+    F -. feedback .-> C
+```
+
+
+For implementation details, see [docs/ARCHITECTURE.md](docs/ARCHITECTURE.md).
+
 ## Problem statement
 
 Learn solution operators while penalizing equation, boundary, and initial-condition violations.
