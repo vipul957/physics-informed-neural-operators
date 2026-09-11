@@ -4,6 +4,33 @@
 
 > **Physics-Informed Neural Operators** is a scientific deep-learning scaffold for PDE residuals and differentiable simulation.
 
+## Start here
+
+**In one sentence:** Learn PDE solution behavior while measuring violations of governing physics.
+
+| If you want to... | Open this first |
+|---|---|
+| Understand the method | [`src/physics_informed_neural_operators/pde.py`](src/physics_informed_neural_operators/pde.py) |
+| See the second reusable utility | [`src/physics_informed_neural_operators/losses.py`](src/physics_informed_neural_operators/losses.py) |
+| Run a tiny example | [`examples/quick_demo.py`](examples/quick_demo.py) |
+| Understand the next milestone | [`docs/ROADMAP.md`](docs/ROADMAP.md) |
+| Check correctness | [`tests/`](tests/) and the CI badge above |
+
+### System flow
+
+```mermaid
+flowchart LR
+    A[Domain input] --> B[Validated contract]
+    B --> C[neural model]
+    C --> D[Measured output]
+    D --> E[Limitations and next experiment]
+```
+
+### What is implemented now
+
+The repository currently contains a dependency-light, deterministic baseline with tests. It is intentionally small enough to inspect line by line. The next research layer should preserve the same input contract and evaluation protocol rather than replacing the baseline with an opaque demo.
+
+
 ## Problem statement
 
 Learn solution operators while penalizing equation, boundary, and initial-condition violations.
